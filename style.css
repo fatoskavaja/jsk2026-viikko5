@@ -1,0 +1,262 @@
+/* Viikko 2, osio a: ulkoinen tyylitiedosto, värit ja typografia. */
+:root {
+    --tausta: #f2f5f9;
+    --pinta: #ffffff;
+    --teksti: #233548;
+    --hillitty: #4b6074;
+    --korostus: #185d91;
+    --reunus: #cfdbe6;
+}
+
+/* Osio b: padding ja border sisältyvät elementin ilmoitettuun leveyteen. */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--tausta);
+    color: var(--teksti);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+}
+
+header, main, footer {
+    width: min(100% - 2rem, 68rem);
+    margin-inline: auto;
+}
+
+header {
+    padding: 3rem 0 1.5rem;
+}
+
+h1, h2 {
+    line-height: 1.25;
+    margin: 0 0 1rem;
+}
+
+h1 {
+    font-size: 2.75rem;
+    letter-spacing: -0.035em;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+header > p, figcaption {
+    color: var(--hillitty);
+}
+
+a {
+    color: var(--korostus);
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+}
+
+a:hover {
+    color: #103d60;
+}
+
+a:focus-visible {
+    outline: 3px solid #185d91;
+    outline-offset: 4px;
+}
+
+/* Osio c: Flexbox ryhmittelee navigaation; wrap sallii rivittymisen. */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+}
+
+nav li {
+    min-width: 0;
+}
+
+/* Osio e: pyöristykset, siirtymä ja hover-korostus. */
+nav a {
+    display: block;
+    padding: 0.65rem 1.1rem;
+    border: 1px solid var(--reunus);
+    border-radius: 0.65rem;
+    background-color: var(--pinta);
+    color: var(--teksti);
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+nav a:hover, nav a[aria-current="page"] {
+    background-color: var(--korostus);
+    border-color: var(--korostus);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgb(24 93 145 / 18%);
+}
+
+/* Osio c: kaksi palstaa työpöydällä; ensimmäinen osio täyttää rivin. */
+main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+main > section:first-child {
+    grid-column: 1 / -1;
+}
+
+/* Osio b: ulkomarginaalit, sisämarginaalit ja reunukset. */
+section {
+    min-width: 0;
+    padding: 2rem;
+    border: 1px solid var(--reunus);
+    border-radius: 1rem;
+    background-color: var(--pinta);
+    box-shadow: 0 6px 24px rgb(35 53 72 / 5%);
+}
+
+section > :last-child {
+    margin-bottom: 0;
+}
+
+section ul {
+    padding-left: 1.3rem;
+    margin: 0;
+}
+
+section li + li {
+    margin-top: 0.65rem;
+}
+
+figure {
+    margin: 1.5rem 0 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    margin-top: 0.65rem;
+}
+
+code {
+    font-family: Consolas, monospace;
+    background-color: #eaf0f6;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.25rem;
+}
+
+footer {
+    padding: 1.5rem 0 2rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--reunus);
+    color: var(--hillitty);
+    font-size: 0.9rem;
+}
+
+/* Osio d: mobiilissa kortit siirtyvät yhteen palstaan. */
+@media (max-width: 44rem) {
+    main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    header {
+        padding-top: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    section {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 24rem) {
+    nav ul {
+        flex-direction: column;
+    }
+}
+
+/* Käyttäjän liikeasetusta kunnioitetaan myös lyhyissä tehosteissa. */
+@media (prefers-reduced-motion: reduce) {
+    nav a {
+        transition: none;
+    }
+}
+
+/* Viikko 3: näppäimistöllä ja hiirellä käytettävä painike. */
+button {
+    max-width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--korostus);
+    border-radius: 0.65rem;
+    background-color: var(--korostus);
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+}
+button:hover { background-color: #103d60; }
+button:focus-visible { outline: 3px solid #185d91; outline-offset: 4px; }
+
+label { display: block; font-weight: bold; margin-bottom: 0.5rem; }
+select {
+    display: block;
+    width: 100%;
+    max-width: 22rem;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--reunus);
+    border-radius: 0.5rem;
+    background-color: white;
+    color: var(--teksti);
+    font: inherit;
+}
+select:focus-visible { outline: 3px solid var(--korostus); outline-offset: 3px; }
+button:disabled { opacity: 0.6; cursor: wait; }
+#tila { font-weight: bold; }
+#tulos:not(:empty) {
+    padding: 1.25rem;
+    margin-top: 1rem;
+    border-left: 4px solid var(--korostus);
+    background-color: #eaf0f6;
+    border-radius: 0.5rem;
+}
+h3 { margin-top: 0; }
+
+/* Viikko 5: pääsisältöön siirtyminen näppäimistöllä. */
+.ohita-linkki {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    transform: translateY(-180%);
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--korostus);
+    border-radius: 0.5rem;
+    background-color: white;
+    z-index: 10;
+}
+.ohita-linkki:focus { transform: translateY(0); }
