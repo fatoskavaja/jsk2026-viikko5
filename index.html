@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hae Vaasan, Helsingin ja Tampereen lämpötila ja tuulen nopeus. Opiskelutyö, joka käyttää avointa Open-Meteo-säärajapintaa.">
+    <title>Viikko 5 – Kaupungin sää</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a class="ohita-linkki" href="#paasisalto">Siirry pääsisältöön</a>
+    <header>
+        <h1>Kaupungin sää</h1>
+        <p>Johdatus sovelluskehitykseen – Viikkotehtävä 5 – julkaisu ja laadunvarmistus</p>
+    </header>
+    <main id="paasisalto" tabindex="-1">
+        <section aria-labelledby="haku-otsikko">
+            <h2 id="haku-otsikko">Hae säätiedot</h2>
+            <p>Valitse kaupunki ja paina hakupainiketta. Tiedot noudetaan verkosta vasta painalluksella.</p>
+            <!-- Osio d: valinta muuttaa API-pyynnön koordinaatteja. -->
+            <label for="kaupunki">Kaupunki</label>
+            <select id="kaupunki">
+                <option value="vaasa">Vaasa</option>
+                <option value="helsinki">Helsinki</option>
+                <option value="tampere">Tampere</option>
+            </select>
+            <!-- Osiot a–c: painike sekä tulos- ja tilaviestit. -->
+            <button id="hae-painike" type="button">Hae säätiedot</button>
+            <p id="tila" role="status" aria-live="polite">Säätietoja ei ole vielä haettu.</p>
+            <div id="tulos" aria-busy="false"></div>
+            <noscript><p>Ota JavaScript käyttöön selaimessa käyttääksesi säähakua.</p></noscript>
+        </section>
+        <section aria-labelledby="tieto-otsikko">
+            <h2 id="tieto-otsikko">Mistä tiedot tulevat?</h2>
+            <p>Säätiedot: <a href="https://open-meteo.com/">Open-Meteo</a>,
+                <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+                Näytettävät tiedot ovat säämalliin perustuvia arvioita kyseiselle sijainnille.</p>
+            <p><a href="https://open-meteo.com/en/docs">Rajapinnan dokumentaatio</a>.</p>
+            <p>Avaa kehittäjätyökalut painamalla <strong>F12 → Console</strong>.
+                Rajapinnan koko JSON-vastaus tulostuu konsoliin onnistuneen haun jälkeen.</p>
+        </section>
+        <section aria-labelledby="kokeilu-otsikko">
+            <h2 id="kokeilu-otsikko">Kokeile toimintaa</h2>
+            <ul>
+                <li>Hae Vaasan sää ja tarkista tulos myös konsolista.</li>
+                <li>Vaihda kaupunki ja tee uusi haku.</li>
+                <li>Katkaise verkkoyhteys ja kokeile hakua uudelleen nähdäksesi virheilmoituksen.</li>
+            </ul>
+            <p>Koodi on laadittu ChatGPT:n avulla. Viikon 4 osioiden a–e toteutukset on merkitty koodikommentein.</p>
+        </section>
+    </main>
+    <footer>
+        <p>Fatos Kavaja – Johdatus sovelluskehitykseen – Viikkotehtävä 5</p>
+    </footer>
+</body>
+</html>
